@@ -1,0 +1,35 @@
+# Core Discord library
+discord.py>=2.3.2
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Async database
+aiosqlite>=0.19.0
+
+# Music dependencies
+yt-dlp>=2023.10.13
+youtube-search-python>=1.6.6
+PyNaCl>=1.5.0
+spotipy>=2.23.0
+
+# Utilities
+aiohttp>=3.9.0
+requests>=2.31.0
+async-timeout>=4.0.3
+
+# Content filtering
+better-profanity>=0.7.0
+
+# System monitoring
+psutil>=5.9.6
+
+# Web framework (for health checks)
+flask>=3.0.0
+gunicorn>=21.2.0
+
+# Google Drive (for legacy token management - consider removing)
+gdown>=4.7.1
+
+# FFmpeg for audio processing (system dependency, not Python package)
+# Install separately: https://ffmpeg.org/download.html
