@@ -18,11 +18,14 @@ from config import Config
 from utils.database import db
 
 # Setup logging
+# Ensure data directory exists for logs
+os.makedirs('data', exist_ok=True)
+
 logging.basicConfig(
     level=getattr(logging, Config.LOG_LEVEL),
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('bot.log'),
+        logging.FileHandler('data/bot.log'),  # Changed to data/bot.log
         logging.StreamHandler(sys.stdout)
     ]
 )
