@@ -12,6 +12,7 @@ from collections import defaultdict
 import time
 from better_profanity import profanity
 import requests
+from aiohttp import web
 
 # Import configuration
 from config import Config
@@ -70,6 +71,10 @@ class MeowDowBot(commands.Bot):
         # Connect to database
         await db.connect()
         logger.info("Database connected")
+
+        # Start health check server
+        await self.start_health_server()
+
         
         # Load all cogs
         await self.load_cogs()
@@ -93,6 +98,20 @@ class MeowDowBot(commands.Bot):
             
         except Exception as e:
             logger.error(f"Failed to sync commands: {e}")
+
+    async def start_health_server(self):
+        """Start a simple web server for health checks"""
+        async def handle(request):
+            return web.Response(text="OK")
+
+        app = web.Application()
+        app.router.add_get('/', handle)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, '0.0.0.0', 8000)
+        await site.start()
+        logger.info("Health check server started on port 8000")
+
     
     async def load_cogs(self):
         """Load all cog files"""
