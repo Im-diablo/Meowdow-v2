@@ -36,6 +36,7 @@ This guide will help you deploy your MeowDow Discord bot to Koyeb for **free 24/
    - `bot.py` (main file)
    - `requirements.txt`
    - `Dockerfile`
+   - `Procfile` (tells Koyeb how to run the bot)
    - All `cogs/` and `utils/` folders
    - `.env.example` (NOT `.env` - never commit secrets!)
 
@@ -71,6 +72,7 @@ Click "Add Environment Variable" and add the following:
 | Name | Value | Description |
 |------|-------|-------------|
 | `DISCORD_TOKEN` | `your_bot_token` | Your Discord bot token (REQUIRED) |
+| `PORT` | `8000` | Port for health checks (auto-set by Koyeb) |
 | `OWNER_ID` | `your_user_id` | Your Discord user ID |
 | `BOT_PREFIX` | `.` | Bot command prefix |
 | `GIPHY_API_KEY` | `your_key` | Giphy API key (optional) |

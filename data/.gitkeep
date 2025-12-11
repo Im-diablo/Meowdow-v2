@@ -1,0 +1,2 @@
+# This file ensures the data directory exists in the repository
+# The directory is needed for database and log files at runtime

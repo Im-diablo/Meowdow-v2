@@ -28,10 +28,12 @@ wheels/
 # Database
 *.db
 *.sqlite3
-data/
+data/*.db
+data/*.sqlite3
 
 # Logs
 *.log
+data/*.log
 logs/
 
 # VS Code

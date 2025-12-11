@@ -108,9 +108,12 @@ class MeowDowBot(commands.Bot):
         app.router.add_get('/', handle)
         runner = web.AppRunner(app)
         await runner.setup()
-        site = web.TCPSite(runner, '0.0.0.0', 8000)
+        
+        # Use PORT environment variable (required by Koyeb)
+        port = int(os.getenv('PORT', '8000'))
+        site = web.TCPSite(runner, '0.0.0.0', port)
         await site.start()
-        logger.info("Health check server started on port 8000")
+        logger.info(f"Health check server started on port {port}")
 
     
     async def load_cogs(self):
